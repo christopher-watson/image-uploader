@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 mongoose
   .connect(process.env.mongoURI, {
     useNewUrlParser: true,
-    // useUnifiedTopology: true,
+    useUnifiedTopology: true,
     dbName: 'images'
   })
   .then(() => console.log('💾  ==> DB successfully connected'))
