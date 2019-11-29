@@ -10,14 +10,14 @@
       "dest": "server.js"
       }],
       "env": {
-        "mongoURI": "process.env.mongoURI",
-        "CLOUDINARY_API_KEY": "process.env.CLOUDINARY_API_KEY",
+        "mongouri": "process.env.mongoURI",
+        "cloudinary_api_key": "process.env.cloudinary_api_key",
         "CLOUDINARY_API_SECRET": "process.env.CLOUDINARY_API_SECRET"
       },
       "build": {
     "env": {
       "mongoURI": "process.env.mongoURI",
-      "CLOUDINARY_API_KEY": "process.env.CLOUDINARY_API_KEY",
+      "cloudinary_api_key": "process.env.cloudinary_api_key",
       "CLOUDINARY_API_SECRET": "process.env.CLOUDINARY_API_SECRET"
     }
   }
