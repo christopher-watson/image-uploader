@@ -10,19 +10,28 @@ dotenv.config();
 // HERE WE WILL UTILIZE EXPRESS HTTP REQUESTS
 const app = express();
 
+
 // HERE WE WILL LET OUR APP TO GET ACCESS TO THE STATIC FOLDERS LIKE CSS, IMAGES
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static('/public/uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('dev')); // for logging
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // DB Config
 // const keys = require('./keys/keys');
 
 // Connect to MongoDB
-mongoose.connect(process.env.mongoURI,{ useNewUrlParser: true, useUnifiedTopology: true, dbName: 'images' })
-  .then(() => console.log("💾  ==> DB successfully connected"))
+mongoose
+  .connect(process.env.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'images'
+  })
+  .then(() => console.log('💾  ==> DB successfully connected'))
   .catch(err => console.log(err));
 // mongoose.connection;
 
