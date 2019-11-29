@@ -29,6 +29,7 @@ mongoose
   .connect(process.env.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    reconnectTries: 30,
     dbName: 'images'
   })
   .then(() => console.log('💾  ==> DB successfully connected'))
