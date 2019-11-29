@@ -1,11 +1,11 @@
 const cloudinary = require('cloudinary');
 // const cloudinary = require('cloudinary').v2;
-const keys = require('../keys/keys');
+// const keys = require('../keys/keys');
 
 cloudinary.config({
   cloud_name: 'yowats0n',
-  api_key: keys.CLOUDINARY_API_KEY,
-  api_secret: keys.CLOUDINARY_API_SECRET
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 exports.uploads = file => {
