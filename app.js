@@ -4,6 +4,8 @@ const path = require('path');
 const morgan = require('morgan');
 const routes = require('./routes/routes');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // HERE WE WILL UTILIZE EXPRESS HTTP REQUESTS
 const app = express();
