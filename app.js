@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 app.use(morgan('dev')); // for logging
 
 // DB Config
-const keys = require('./keys/keys');
+// const keys = require('./keys/keys');
 
 // Connect to MongoDB
-mongoose.connect(keys.mongoURI,{ useNewUrlParser: true, useUnifiedTopology: true, dbName: 'images' })
+mongoose.connect(process.env.mongoURI,{ useNewUrlParser: true, useUnifiedTopology: true, dbName: 'images' })
   .then(() => console.log("💾  ==> DB successfully connected"))
   .catch(err => console.log(err));
 // mongoose.connection;

@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {
+      "mongoURI": "mongodb+srv://wats0n:ckNpYWVyInVtRHQN@images-1igsq.mongodb.net/",
+      "CLOUDINARY_API_KEY": "955461444614476",
+      "CLOUDINARY_API_SECRET": "Qs-bQingrnRrY0VhX1s1dwAJVbE"
+    }
+  }
+}
