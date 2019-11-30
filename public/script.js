@@ -10,6 +10,7 @@ let trow = text => {
   return row;
 };
 
+// grab all users from db
 getAllUsers = () => {
   axios
     .get(
@@ -27,6 +28,7 @@ getAllUsers = () => {
 
 getAllUsers();
 
+// add new user to db
 addNewUser = (name, email) => {
   axios.post(
     'https://image-uploader.christopherwatson.now.sh/api/users/createUser',
@@ -37,6 +39,7 @@ addNewUser = (name, email) => {
   );
 };
 
+// form & button
 const submit = document.getElementById('submit-button');
 const name = document.getElementById('name-input');
 const email = document.getElementById('email-input');
