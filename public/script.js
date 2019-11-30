@@ -1,5 +1,8 @@
 // DOM elements
 const tbody = document.getElementById('tbody');
+const submit = document.getElementById('submit-button');
+const name = document.getElementById('name-input');
+const email = document.getElementById('email-input');
 
 // toggle name
 toggleName = data => {
@@ -29,9 +32,7 @@ let trow = (name, email) => {
 // grab all users from db
 getAllUsers = () => {
   axios
-    .get(
-      'https://image-uploader-prod.now.sh/api/users/getAllUsers'
-    )
+    .get('https://image-uploader-prod.now.sh/api/users/getAllUsers')
     .then(async res => {
       data = await res.data;
       for (var i of data) {
@@ -43,25 +44,53 @@ getAllUsers = () => {
 };
 getAllUsers();
 
+clearForm = () => {
+  name.value = '';
+  email.value = '';
+};
+
 // add new user to db
-addNewUser = (name, email) => {
-  axios.post(
-    'https://image-uploader-prod.now.sh/api/users/createUser',
-    {
-      name: name,
-      email: email
-    }
-  );
+addNewUser = async (name, email) => {
+  if (name.trim() > 0 && email.trim() > 0) {
+    await axios
+      .post('https://image-uploader-prod.now.sh/api/users/createUser', {
+        name: name,
+        email: email
+      })
+      .then((res, err) => {
+        if (res) {
+          formSuccess();
+        }
+        if (err) {
+          console.log(err);
+          formError();
+        }
+      });
+  }
+  await clearForm();
+};
+
+// form error
+formError = () => {
+  const error = document.getElementById('error-span');
+  error.innerText = 'ERROR';
+  setTimeout(function() {
+    error.innerText = '';
+  }, 2000);
+};
+
+// form success
+formSuccess = () => {
+  const success = document.getElementById('success-span');
+  success.innerText = 'Success!';
+  setTimeout(function() {
+    success.innerText = '';
+  }, 2000);
 };
 
 // form & button
-const submit = document.getElementById('submit-button');
-const name = document.getElementById('name-input');
-const email = document.getElementById('email-input');
 submit.addEventListener('click', async () => {
   await addNewUser(name.value, email.value);
-  email.value = '';
-  name.value = '';
 });
 
 // toggle api div
@@ -77,10 +106,9 @@ window.addEventListener('keyup', e => {
 
 toggleApiDiv = () => {
   const apiDiv = document.getElementById('api-container');
-  if(apiDiv.style.display === 'none'){
-    apiDiv.setAttribute('style', 'display: initial')
-  }
-  else{
-    apiDiv.setAttribute('style', 'display: none')
+  if (apiDiv.style.display === 'none') {
+    apiDiv.setAttribute('style', 'display: initial');
+  } else {
+    apiDiv.setAttribute('style', 'display: none');
   }
 };
