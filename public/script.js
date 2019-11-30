@@ -51,7 +51,7 @@ clearForm = () => {
 
 // add new user to db
 addNewUser = async (name, email) => {
-  if (name.trim() > 0 && email.trim() > 0) {
+  if (name.trim().length > 0 && email.trim().length > 0) {
     await axios
       .post('https://image-uploader-prod.now.sh/api/users/createUser', {
         name: name,
@@ -66,6 +66,8 @@ addNewUser = async (name, email) => {
           formError();
         }
       });
+  } else {
+    await formError();
   }
   await clearForm();
 };
