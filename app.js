@@ -1,27 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-// const morgan = require('morgan');
 const routes = require('./routes');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-dotenv.config();
+// const morgan = require('morgan');
 
-// HERE WE WILL UTILIZE EXPRESS HTTP REQUESTS
+dotenv.config();
 const app = express();
 
 // HERE WE WILL LET OUR APP TO GET ACCESS TO THE STATIC FOLDERS LIKE CSS, IMAGES
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use('/uploads', express.static('/public/uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(morgan('dev')); // for logging
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
-
-// DB Config
-// const keys = require('./keys/keys');
+// app.use(morgan('dev')); // for logging
+// app.use('/uploads', express.static('/public/uploads'));
 
 // Connect to MongoDB
 mongoose
@@ -35,7 +31,7 @@ mongoose
   .catch(err => console.log(err));
 // mongoose.connection;
 
-// HANDLING CORS ERRORS
+// HANDLING CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');
@@ -48,7 +44,7 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-//HANDLE ERROR
+//HANDLE ERRORS
 app.use((req, res, next) => {
   const error = new Error('NOT FOUND');
   error.status = 404;
@@ -63,5 +59,4 @@ app.use((error, req, res, next) => {
   });
 });
 
-// DO NOT FORGET TO EXPORT THE FILE
 module.exports = app;

@@ -14,7 +14,7 @@ let trow = text => {
 getAllUsers = () => {
   axios
     .get(
-      'https://image-uploader.christopherwatson.now.sh/api/users/findAllUsers'
+      'https://image-uploader.christopherwatson.now.sh/api/users/getAllUsers'
     )
     .then(async res => {
       data = await res.data;

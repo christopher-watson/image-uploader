@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 
 module.exports = {
-  findAllUsers: function(req, res) {
+  getAllUsers: function(req, res) {
     User.find(req.query)
       .sort({
         date: 1
