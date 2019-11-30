@@ -16,4 +16,4 @@ var imageUpload = mongoose.Schema({
     default: Date.now
   }
 });
-module.exports = mongoose.model('imageUpload', imageUpload);
+module.exports = mongoose.model('images', imageUpload);

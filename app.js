@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 // const morgan = require('morgan');
-const routes = require('./routes/routes');
+const routes = require('./routes');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -10,10 +10,9 @@ dotenv.config();
 // HERE WE WILL UTILIZE EXPRESS HTTP REQUESTS
 const app = express();
 
-
 // HERE WE WILL LET OUR APP TO GET ACCESS TO THE STATIC FOLDERS LIKE CSS, IMAGES
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/uploads', express.static('/public/uploads'));
+// app.use('/uploads', express.static('/public/uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(morgan('dev')); // for logging
@@ -47,8 +46,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// THIS PART HANDLES THE ROUTING/URL
-app.use('/uploads', routes);
+app.use(routes);
 
 //HANDLE ERROR
 app.use((req, res, next) => {
