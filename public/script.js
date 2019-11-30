@@ -1,18 +1,47 @@
-// import axios from 'axios'
-
 // DOM elements
 const tbody = document.getElementById('tbody');
 
 // new table row
-let trow = () => {
+let trow = text => {
   let row = document.createElement('tr');
   let data = document.createElement('td');
-  data.innerText = 'Test';
+  data.innerText = text;
   row.appendChild(data);
   return row;
 };
 
-tbody.appendChild(trow());
-axios
-  .get('https://jsonplaceholder.typicode.com/todos/1')
-  .then(res => console.log(res));
+getAllUsers = () => {
+  axios
+    .get(
+      'https://image-uploader.christopherwatson.now.sh/api/users/findAllUsers'
+    )
+    .then(async res => {
+      data = await res.data;
+      for (var i of data) {
+        await tbody.appendChild(
+          trow(i.name.charAt(0).toUpperCase() + i.name.slice(1))
+        );
+      }
+    });
+};
+
+getAllUsers();
+
+addNewUser = (name, email) => {
+  axios.post(
+    'https://image-uploader.christopherwatson.now.sh/api/users/createUser',
+    {
+      name: name,
+      email: email
+    }
+  );
+};
+
+const submit = document.getElementById('submit-button');
+const name = document.getElementById('name-input');
+const email = document.getElementById('email-input');
+submit.addEventListener('click', async () => {
+  addNewUser(name.value, email.value);
+  email.value = '';
+  name.value = '';
+});
