@@ -30,7 +30,7 @@ let trow = (name, email) => {
 getAllUsers = () => {
   axios
     .get(
-      'https://image-uploader.christopherwatson.now.sh/api/users/getAllUsers'
+      'https://image-uploader-prod.now.sh/api/users/getAllUsers'
     )
     .then(async res => {
       data = await res.data;
@@ -46,7 +46,7 @@ getAllUsers();
 // add new user to db
 addNewUser = (name, email) => {
   axios.post(
-    'https://image-uploader.christopherwatson.now.sh/api/users/createUser',
+    'https://image-uploader-prod.now.sh/api/users/createUser',
     {
       name: name,
       email: email
