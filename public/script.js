@@ -41,18 +41,7 @@ const submit = document.getElementById('submit-button');
 const name = document.getElementById('name-input');
 const email = document.getElementById('email-input');
 submit.addEventListener('click', async () => {
-  await addNewUser(name.value, email.value).then( async(res, err) => {
-    if(!err){
-      console.log(res)
-      await tbody.appendChild(
-        trow(name.value.charAt(0).toUpperCase() + name.value.slice(1))
-      );
-    }
-    else {
-      console.log(err);
-    }
-  });
-
+  await addNewUser(name.value, email.value);
   email.value = '';
   name.value = '';
 });
