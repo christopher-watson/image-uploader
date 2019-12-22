@@ -97,11 +97,12 @@ submit.addEventListener('click', async () => {
 
 // toggle api div
 let pressed = [];
-const secretCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
 window.addEventListener('keyup', e => {
   pressed.push(e.keyCode);
-  pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
-  if (JSON.stringify(pressed) === JSON.stringify(secretCode)) {
+  pressed.splice(-4-1, pressed.length-4);
+  const allEqual = arr => arr.every( v => v === arr[0] )
+  if (allEqual(pressed) && pressed.length > 3){
+    console.log(true);
     toggleApiDiv();
   }
 });
