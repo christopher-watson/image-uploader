@@ -12,7 +12,8 @@ const Users = new Schema({
   },
   _images: [
     {
-      type: Schema.Types.Mixed,
+      // type: Schema.Types.Mixed,
+      type: String,
       ref: 'Images'
     }
   ]
