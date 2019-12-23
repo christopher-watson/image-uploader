@@ -29,8 +29,8 @@ module.exports = {
   },
   addImageToUser: function(req, res) {
     User.findOneAndUpdate(
-      // userId as parameter _id
-      { _id: req.params.id },
+      // email as parameter
+      { email: req.params.id },
       // image id as body
       { $push: { _images: req.body } }
       // {safe: true, upsert: true},
