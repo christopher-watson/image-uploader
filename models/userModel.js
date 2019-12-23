@@ -10,13 +10,13 @@ const Users = new Schema({
     type: String,
     default: 'testEmail'
   },
-  _images: [
-    {
-      // type: Schema.Types.Mixed,
-      type: String,
-      ref: 'Images'
-    }
-  ]
+  _images: [String]
+  // _images: [
+  //   {
+  //     // type: Schema.Types.Mixed,
+  //     ref: 'Images'
+  //   }
+  // ]
 });
 
 module.exports = mongoose.model('Users', Users);
