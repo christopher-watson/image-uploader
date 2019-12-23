@@ -10,7 +10,7 @@ const Users = new Schema({
     type: String,
     default: 'testEmail'
   },
-  _images: [String]
+  _images: [String],
   // _images: [
   //   {
   //     // type: Schema.Types.Mixed,
