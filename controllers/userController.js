@@ -32,7 +32,7 @@ module.exports = {
       // userId as parameter _id
       { _id: req.params.id },
       // image id as body
-      { $push: { _images: req.body.image } }
+      { $push: { _images: req.body } }
       // {safe: true, upsert: true},
     )
       .then(dbModel => res.json(dbModel))
