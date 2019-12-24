@@ -24,6 +24,7 @@ mongoose
   .connect(process.env.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
     reconnectTries: 30,
     dbName: 'images'
   })
