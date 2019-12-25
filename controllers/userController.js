@@ -41,8 +41,10 @@ module.exports = {
   removeImageFromUser: function(req, res) {
     console.log(req.params.id);
     User.findOneAndUpdate(
-      { _id: req.params.id },
-      { $pull: { _images: req.body } }
+      // email as parameter
+      { email: req.params.id },
+      { $pull: { _images: req.body } },
+      { multi: true }
     )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
