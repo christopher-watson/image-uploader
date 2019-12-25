@@ -19,6 +19,6 @@ router.get('/findByUserName/:username', userController.findByUserName);
 router.get('/findByUserId/:id', userController.findUserById);
 
 // remove image -- api/users/remove/:id
-router.put('/removeUser/:id', userController.removeImageFromUser);
+router.put('/removeImageFromUser/:id', userController.removeImageFromUser);
 
 module.exports = router;
