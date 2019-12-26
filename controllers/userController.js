@@ -58,7 +58,7 @@ module.exports = {
         $push: {
           _images: {
             $each: [req.body],
-            $position: req.params.pos
+            $position: req.query.pos
           }
         }
       }
