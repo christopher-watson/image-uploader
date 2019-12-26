@@ -21,4 +21,7 @@ router.get('/findByUserId/:id', userController.findUserById);
 // remove image -- api/users/remove/:id
 router.put('/removeImageFromUser/:id', userController.removeImageFromUser);
 
+// add image at an index-- api/users/addImageAtIndex/:id
+router.put('/addImageAtIndex?user=:id&?index=:pos', userController.addImageAtIndex);
+
 module.exports = router;
