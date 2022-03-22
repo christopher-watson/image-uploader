@@ -95,23 +95,23 @@ submit.addEventListener('click', async () => {
   await addNewUser(name.value, email.value);
 });
 
-// toggle api div
-let pressed = [];
-window.addEventListener('keyup', e => {
-  pressed.push(e.keyCode);
-  pressed.splice(-4-1, pressed.length-4);
-  const allEqual = arr => arr.every( v => v === arr[0] )
-  if (allEqual(pressed) && pressed.length > 3){
-    console.log(true);
-    toggleApiDiv();
-  }
-});
+// // toggle api div
+// let pressed = [];
+// window.addEventListener('keyup', e => {
+//   pressed.push(e.keyCode);
+//   pressed.splice(-4-1, pressed.length-4);
+//   const allEqual = arr => arr.every( v => v === arr[0] )
+//   if (allEqual(pressed) && pressed.length > 3){
+//     console.log(true);
+//     toggleApiDiv();
+//   }
+// });
 
-toggleApiDiv = () => {
-  const apiDiv = document.getElementById('api-container');
-  if (apiDiv.style.display === 'none') {
-    apiDiv.setAttribute('style', 'display: initial');
-  } else {
-    apiDiv.setAttribute('style', 'display: none');
-  }
-};
+// toggleApiDiv = () => {
+//   const apiDiv = document.getElementById('api-container');
+//   if (apiDiv.style.display === 'none') {
+//     apiDiv.setAttribute('style', 'display: initial');
+//   } else {
+//     apiDiv.setAttribute('style', 'display: none');
+//   }
+// };
